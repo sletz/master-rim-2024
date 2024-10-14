@@ -4,8 +4,6 @@
 /*
 Structure de contrôle : boucle avec le FOR pour traiter des tableaux
 */
-
-float a = 10.f;
     
 int main()
 {
