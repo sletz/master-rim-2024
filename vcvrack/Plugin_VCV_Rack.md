@@ -8,7 +8,7 @@
     - si on a encore la version Intel de VCV Rack (émulée avec Rosetta), on charge: https://vcvrack.com/downloads/Rack-SDK-2.4.1-mac-x64.zip
     - si on a la version ARM de VCV Rack, on charge: https://vcvrack.com/downloads/Rack-SDK-2.5.2-mac-x64+arm64.zip
 
-- ouvrir un terminal, se placer dans le dossier du SDK (Rack-SDK) avec « **cd /path/to/SDK** » 
+- ouvrir un terminal, se placer dans le dossier du SDK (Rack-SDK) avec « **cd /path/to/SDK** ». **ATTENTION : le path ne doit contenir aucun espace!** (déplacer le dossier si besoin...)
 
 - dans le terminal taper : **export RACK_DIR="/path/to/SDK"**
 
@@ -36,6 +36,6 @@ to the init() function in plugin.cpp.)
 
 - bien s'assurer que l'application RACK a été démarrée au moins une fois
 
-- dans le terminal taper : **make install** 
+- dans le terminal taper : **make install**, le plugin est copié dans /Users/XXXX/Library/Application\ Support/Rack2
 
 - ouvrir l’application VCV Rack, appuyer sur la touche "return" pour faire apparaitre la liste des plugins, et vérifier que le nouveau plugin apparait (il a 4 entrées de contrôle, 2 entrées audio, 2 sorties audio)
