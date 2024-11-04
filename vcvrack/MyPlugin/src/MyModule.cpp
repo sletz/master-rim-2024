@@ -134,14 +134,17 @@ struct MyModule : Module {
 
     void process(const ProcessArgs& args) override {
         
-        // Genène 2 signaux différent sur les cannaux gauche et droite
+        /*
+        // Genère 2 signaux différents sur les cannaux gauche et droite.
         float left = process_one_sample_square();
         float right = process_one_sample_sinus();
         
         outputs[OUTPUT1_OUTPUT].setVoltage(left*5.0f);
         outputs[OUTPUT2_OUTPUT].setVoltage(right*5.0f);
-       
-        /*
+        */
+        
+        // Panoramique : le signal de gauche est "panoramiqué" sur la sortie stéréo.
+        
         float pan = params[PARAM1_PARAM].getValue();
         float input = inputs[INPUT1_INPUT].getVoltage();
         
@@ -150,7 +153,6 @@ struct MyModule : Module {
         
         outputs[OUTPUT1_OUTPUT].setVoltage(left);
         outputs[OUTPUT2_OUTPUT].setVoltage(right);
-        */
     }
     
 };
