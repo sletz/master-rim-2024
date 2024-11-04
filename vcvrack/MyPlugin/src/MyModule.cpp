@@ -89,42 +89,42 @@ float process_one_sample_sinus()
 }
 
 struct MyModule : Module {
-	enum ParamId {
-		PARAM1_PARAM,
-		PARAM2_PARAM,
-		PARAM3_PARAM,
-		PARAM4_PARAM,
-		PARAMS_LEN
-	};
-	enum InputId {
-		INPUT1_INPUT,
-		INPUT2_INPUT,
-		INPUTS_LEN
-	};
-	enum OutputId {
-		OUTPUT1_OUTPUT,
-		OUTPUT2_OUTPUT,
-		OUTPUTS_LEN
-	};
-	enum LightId {
-		LIGHTS_LEN
-	};
+    enum ParamId {
+        PARAM1_PARAM,
+        PARAM2_PARAM,
+        PARAM3_PARAM,
+        PARAM4_PARAM,
+        PARAMS_LEN
+    };
+    enum InputId {
+        INPUT1_INPUT,
+        INPUT2_INPUT,
+        INPUTS_LEN
+    };
+    enum OutputId {
+        OUTPUT1_OUTPUT,
+        OUTPUT2_OUTPUT,
+        OUTPUTS_LEN
+    };
+    enum LightId {
+        LIGHTS_LEN
+    };
 
-	MyModule()
+    MyModule()
     {
-		config(PARAMS_LEN, INPUTS_LEN, OUTPUTS_LEN, LIGHTS_LEN);
-		configParam(PARAM1_PARAM, 0.f, 1.f, 0.f, "");
-		configParam(PARAM2_PARAM, 0.f, 1.f, 0.f, "");
-		configParam(PARAM3_PARAM, 0.f, 1.f, 0.f, "");
-		configParam(PARAM4_PARAM, 0.f, 1.f, 0.f, "");
-		configInput(INPUT1_INPUT, "");
-		configInput(INPUT2_INPUT, "");
-		configOutput(OUTPUT1_OUTPUT, "");
-		configOutput(OUTPUT2_OUTPUT, "");
+        config(PARAMS_LEN, INPUTS_LEN, OUTPUTS_LEN, LIGHTS_LEN);
+        configParam(PARAM1_PARAM, 0.f, 1.f, 0.f, "");
+        configParam(PARAM2_PARAM, 0.f, 1.f, 0.f, "");
+        configParam(PARAM3_PARAM, 0.f, 1.f, 0.f, "");
+        configParam(PARAM4_PARAM, 0.f, 1.f, 0.f, "");
+        configInput(INPUT1_INPUT, "");
+        configInput(INPUT2_INPUT, "");
+        configOutput(OUTPUT1_OUTPUT, "");
+        configOutput(OUTPUT2_OUTPUT, "");
         
         init_square(44100, 600);
         init_sinus(44100, 400);
-	}
+    }
     
     ~MyModule()
     {
@@ -132,7 +132,7 @@ struct MyModule : Module {
         destroy_sinus();
     }
 
-	void process(const ProcessArgs& args) override {
+    void process(const ProcessArgs& args) override {
         
         // Genène 2 signaux différent sur les cannaux gauche et droite
         float left = process_one_sample_square();
@@ -151,31 +151,31 @@ struct MyModule : Module {
         outputs[OUTPUT1_OUTPUT].setVoltage(left);
         outputs[OUTPUT2_OUTPUT].setVoltage(right);
         */
-	}
+    }
     
 };
 
 struct MyModuleWidget : ModuleWidget {
-	MyModuleWidget(MyModule* module) {
-		setModule(module);
-		setPanel(createPanel(asset::plugin(pluginInstance, "res/MyModule.svg")));
+    MyModuleWidget(MyModule* module) {
+        setModule(module);
+        setPanel(createPanel(asset::plugin(pluginInstance, "res/MyModule.svg")));
 
-		addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
-		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));
-		addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
-		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
+        addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
+        addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));
+        addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
+        addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(8.002, 21.161)), module, MyModule::PARAM1_PARAM));
-		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(22.705, 21.161)), module, MyModule::PARAM2_PARAM));
-		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(7.877, 42.705)), module, MyModule::PARAM3_PARAM));
-		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(22.92, 42.857)), module, MyModule::PARAM4_PARAM));
+        addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(8.002, 21.161)), module, MyModule::PARAM1_PARAM));
+        addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(22.705, 21.161)), module, MyModule::PARAM2_PARAM));
+        addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(7.877, 42.705)), module, MyModule::PARAM3_PARAM));
+        addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(22.92, 42.857)), module, MyModule::PARAM4_PARAM));
 
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(8.569, 75.336)), module, MyModule::INPUT1_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(22.894, 75.336)), module, MyModule::INPUT2_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(8.569, 75.336)), module, MyModule::INPUT1_INPUT));
+        addInput(createInputCentered<PJ301MPort>(mm2px(Vec(22.894, 75.336)), module, MyModule::INPUT2_INPUT));
 
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(8.323, 100.332)), module, MyModule::OUTPUT1_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(22.92, 100.332)), module, MyModule::OUTPUT2_OUTPUT));
-	}
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(8.323, 100.332)), module, MyModule::OUTPUT1_OUTPUT));
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(22.92, 100.332)), module, MyModule::OUTPUT2_OUTPUT));
+    }
 };
 
 Model* modelMyModule = createModel<MyModule, MyModuleWidget>("MyModule");
