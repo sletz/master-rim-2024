@@ -10,9 +10,9 @@ int table_size_square;
 int phase_square;
 
 /* Création et remplissage de la table avec un période du signal */
-void init_square(float sample_rate, float freq)
+void init_square(int sample_rate, int freq)
 {
-    table_size_square = (int)(sample_rate / freq);
+    table_size_square = (int)((float)sample_rate / (float)freq);
     printf("table_size_square: %d\n", table_size_square);
     
     /* Alloue dynamiquement une table. */
@@ -80,10 +80,8 @@ int main()
     printf("==================\n");
     printf("Simuler l'audio\n");
     
-    int i;
-    
     /*
-    for (i = 0; i < 500; i++) {
+    for (int i = 0; i < 500; i++) {
         printf("Generated sample = %d value = %f\n", i, process_one_sample_square());
     }
     */
