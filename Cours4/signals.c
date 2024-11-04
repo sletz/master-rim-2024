@@ -48,15 +48,13 @@ void sawtooth()
     }
 }
 
-float PI = 3.141592653;
-
 void sinus()
 {
     float table[100];
     int i;
     
     for (i = 0; i < 100; i = i+1) {
-        table[i] = sin(2.f*PI*(float)i/99.f);
+        table[i] = sin(2.f*M_PI*(float)i/99.f);
     }
     
     printf("sinus\n");

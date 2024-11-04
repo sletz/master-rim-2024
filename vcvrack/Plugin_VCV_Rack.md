@@ -8,7 +8,7 @@
     - si on a encore la version Intel de VCV Rack (émulée avec Rosetta), on charge: https://vcvrack.com/downloads/Rack-SDK-2.4.1-mac-x64.zip
     - si on a la version ARM de VCV Rack, on charge: https://vcvrack.com/downloads/Rack-SDK-2.5.2-mac-x64+arm64.zip
 
-- ouvrir un terminal, se placer dans le dossier du SDK (Rack-SDK) avec « **cd /path/to/SDK** ». **ATTENTION : le path ne doit contenir aucun espace!** (déplacer le dossier si besoin...)
+- ouvrir un terminal, se placer dans le dossier du SDK (Rack-SDK) avec « **cd /path/to/SDK** ». **ATTENTION : le path ne doit contenir aucun espace!** (déplacer le dossier si besoin...). Ajuster le path en fonction de l'endroit ou le SDK est copié. 
 
 - dans le terminal taper : **export RACK_DIR="/path/to/SDK"**
 
